@@ -1,0 +1,16 @@
+3
+Ativo Estavel
+Renda variavel
+10
+100
+110
+Ativo Queda
+Renda variavel
+5
+200
+160
+Ativo Crescimento
+Renda variavel
+20
+50
+65
