@@ -18,7 +18,7 @@ int risco(Ativo carteira[], int pos);
 
 
 float valor_total(Ativo carteira[], int total);
-/* Use apenas com precoCompra maior que zero. */
+
 float rentabilidade_ativo(Ativo ativo);
 void ordenar_rentabilidade(Ativo carteira[], int total);
 void simulador_educativo(Ativo carteira[], int total);
