@@ -95,7 +95,7 @@ int risco(Ativo carteira[],int pos){
 }
 
 
-/* Taxas mensais ficticias para comparar juros compostos. */
+
 #define TAXA_POUPANCA 0.005
 #define TAXA_TESOURO 0.008
 #define TAXA_CDB 0.009
@@ -112,8 +112,7 @@ float rentabilidade_ativo(Ativo ativo) {
     return (ativo.precoAtual - ativo.precoCompra) / ativo.precoCompra * 100;
 }
 
-/* Bubble sort: compara vizinhos e troca a struct inteira.
-   Ativos sem preco de compra valido ficam no final. */
+
 void ordenar_rentabilidade(Ativo carteira[], int total) {
     for (int i = 0; i < total - 1; i++) {
         for (int j = 0; j < total - 1 - i; j++) {
