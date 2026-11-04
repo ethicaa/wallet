@@ -1,6 +1,7 @@
 #include "modulo.h"
 #include <stdio.h>
 #include <string.h>
+#include <errno.h>
 
 /* Quantidade de ativos seguida de cinco linhas por ativo. */
 int salvar_carteira(const Ativo carteira[], int total) {
@@ -25,11 +26,17 @@ int salvar_carteira(const Ativo carteira[], int total) {
 int carregar_carteira(Ativo carteira[], int limite) {
     FILE *arquivo = fopen("data/carteira.txt", "r");
     if (arquivo == NULL) {
+        if (errno == ENOENT) return 0; /* Primeira execucao: arquivo ainda nao existe. */
         printf("\nErro ao abrir data/carteira.txt para leitura.\n");
         return -1;
     }
     int total;
-    if (fscanf(arquivo, "%d", &total) != 1 || total < 0 || total > limite) {
+    int resultado = fscanf(arquivo, "%d", &total);
+    if (resultado == EOF && !ferror(arquivo)) {
+        fclose(arquivo);
+        return 0; /* Arquivo vazio: comecar sem ativos. */
+    }
+    if (resultado != 1 || total < 0 || total > limite) {
         printf("\nQuantidade de ativos invalida no arquivo.\n");
         fclose(arquivo);
         return -1;
@@ -56,3 +63,4 @@ int carregar_carteira(Ativo carteira[], int limite) {
     fclose(arquivo);
     return total;
 }
+
