@@ -71,11 +71,12 @@ O programa explica rentabilidade, juros compostos, risco e liquidez.
 O programa carrega a carteira ao iniciar e salva apos cada cadastro,
 ordenacao, relatorio e ao escolher Sair.
 Usa fopen, fprintf, fscanf e fclose, verificando NULL ao abrir.
-Se a leitura falhar, encerra para evitar sobrescrever dados invalidos.
+Arquivo vazio ou inexistente inicia uma carteira vazia. O arquivo e criado ao salvar.
+Outros erros de leitura encerram o programa para preservar dados invalidos.
 
 O arquivo comeca com o numero de ativos. Cada ativo ocupa cinco linhas:
 nome, categoria, quantidade, preco de compra e preco atual.
-Para comecar vazio, data/carteira.txt deve conter apenas 0.
+Para comecar vazio, deixe data/carteira.txt vazio, com apenas 0, ou remova o arquivo.
 
 Para usar os exemplos, com o programa fechado, faca uma copia de seguranca
 da sua carteira e copie o conteudo de data/carteira_exemplo.txt para
@@ -112,3 +113,4 @@ Nao inclua o arquivo de video no ZIP.
 Compactar codigo-fonte, include, data e README.md e enviar pelo grupo
 do Blackboard. Apresentacao presencial: Aula 12 (04/11), conforme o enunciado.
 O relatorio final do sistema e exibido na opcao 7.
+
