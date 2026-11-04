@@ -3,7 +3,7 @@
 #include <string.h>
 #include <errno.h>
 
-/* Quantidade de ativos seguida de cinco linhas por ativo. */
+
 int salvar_carteira(const Ativo carteira[], int total) {
     FILE *arquivo = fopen("data/carteira.txt", "w");
     if (arquivo == NULL) {
@@ -22,11 +22,11 @@ int salvar_carteira(const Ativo carteira[], int total) {
     return sucesso;
 }
 
-/* -1 indica erro: o programa deve parar para preservar os dados. */
+
 int carregar_carteira(Ativo carteira[], int limite) {
     FILE *arquivo = fopen("data/carteira.txt", "r");
     if (arquivo == NULL) {
-        if (errno == ENOENT) return 0; /* Primeira execucao: arquivo ainda nao existe. */
+        if (errno == ENOENT) return 0; 
         printf("\nErro ao abrir data/carteira.txt para leitura.\n");
         return -1;
     }
@@ -34,7 +34,7 @@ int carregar_carteira(Ativo carteira[], int limite) {
     int resultado = fscanf(arquivo, "%d", &total);
     if (resultado == EOF && !ferror(arquivo)) {
         fclose(arquivo);
-        return 0; /* Arquivo vazio: comecar sem ativos. */
+        return 0; 
     }
     if (resultado != 1 || total < 0 || total > limite) {
         printf("\nQuantidade de ativos invalida no arquivo.\n");
